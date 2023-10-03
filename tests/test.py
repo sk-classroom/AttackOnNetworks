@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
     def test_random_attack(self):
         x, y = random_attack(self.g)
 
-        assert np.all(np.isclose(np.diff(x), 1.0 / g.vcount()))
+        assert np.all(np.isclose(np.diff(x), 1.0 / self.g.vcount()))
         assert len(x) == len(y)
 
         rindex = np.mean(y)
