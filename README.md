@@ -91,7 +91,7 @@ Implement the $k$-core decomposition algorithm.
 The algorithm identifies the $k$-core as follows:
 
 1. Calculate the degree of nodes in the network
-2. Remove the nodes with degree $k$ or less in the network.
+2. Remove the nodes with degree less than degree $k$ in the network.
 3. Recalculate the degree
 4. If all nodes have a degree less than $k$ in the removed network, terminate the algorithm. Otherwise, go back to step 2.
 
