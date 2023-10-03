@@ -8,8 +8,8 @@ from scripts.network_robustness import *
 from scripts.k_core_decomposition import *
 
 
-class TestRobustnessProfile:
-    def __init__(self):
+class Test(unittest.TestCase):
+    def setUp(self, **params):
         G = nx.karate_club_graph()
         A = nx.adjacency_matrix(G)
         src, trg, _ = sparse.find(sparse.triu(A, 1))
@@ -28,14 +28,14 @@ class TestRobustnessProfile:
 
     def test_random_attack(self):
         x, y = degree_targeted_attack(self.g)
-        assert np.all(np.isclose(np.diff(x), 1.0 / g.vcount()))
+        assert np.all(np.isclose(np.diff(x), 1.0 / self.g.vcount()))
         assert len(x) == len(y)
         rindex = np.mean(y)
         assert np.isclose(rindex, 0.16050420168067225)
 
     def test_betweenness_attack(self):
         x, y = betweenness_targeted_attack(self.g)
-        assert np.all(np.isclose(np.diff(x), 1.0 / g.vcount()))
+        assert np.all(np.isclose(np.diff(x), 1.0 / self.g.vcount()))
         assert len(x) == len(y)
         rindex = np.mean(y)
         assert np.isclose(rindex, 0.1588235294117647)
@@ -44,5 +44,6 @@ class TestRobustnessProfile:
         node_indices = kcore_decomposition(self.g, k=4)
 
         assert np.all(
-            np.sort(node_indices) == np.sort(np.where(np.array(g.coreness()) == 4)[0])
+            np.sort(node_indices)
+            == np.sort(np.where(np.array(self.g.coreness()) == 4)[0])
         )

@@ -1,13 +1,13 @@
-In this assignment, we will break a network into pieces. Many empirical networks are hard to break if we randomly attack it. However, by strategically attacking a specific part of the network, we can break it very easily. This leads to the idea of "importance", i.e., a node is "important" for the network if removing the node breaks the network.
+In this assignment, we will break a network into pieces. Many empirical networks are hard to break if we randomly attack it. However, by strategically attacking a specific part of the network, we can break it very easily. This leads to the idea of "importance," i.e., a node is "important" for the network if removing the node breaks the network.
 
 # Exercise
 - See the notebook under `notebook` folder
 
 # Task
 
-Your task is to implement some functions in python scripts under `./scripts` folder.
+Your task is to implement some functions in the Python scripts under `./scripts` folder.
 
-You can check the correctness of your implementation by `git push` the scripts. It will trigger the autograding on GitHub server. You can see the correctness in GitHub Actions.
+You can check the correctness of your implementation by `git push` the scripts. It will trigger the auto-grading on the GitHub server. You can see the correctness in GitHub Actions.
 
 ### Example data
 
@@ -42,7 +42,7 @@ print(g.vs[0]["Name"], ",", g.vs[1]["Name"], ", ...")
 
 ## Task 1: Robustness
 
-Open the script "scripts/network_robustness.py" and implement the following functions to draw the robustness profile curve.
+Open the script `scripts/network_robustness.py` and implement the following functions to draw the robustness profile curve.
 
 
 ```python
@@ -78,12 +78,11 @@ def betweenness_targeted_attack(g):
 ```
 
 The robustness profile curve can be computed as follows.
-1. We start from a given network.
-2. Remove one node from the network. The node is chosen by random, or based on degree, or betweenness centrality.
-3. Compute the proportion of nodes in the giant connected component.
-4. Repeat steps 2 and 3 until no node is left in the network.
+1. Remove one node from the network. The node is chosen by random, or based on degree, or betweenness centrality.
+2. Compute the proportion of nodes in the giant connected component.
+3. Repeat steps 1 and 2 until no node is left in the network.
 
-To test your code, you can draw and see the robustness profile by using the example data by running a notebook in ./notebooks/draw_robustness_profile.ipynb
+To test your code, you can draw and see the robustness profile by using the example data by running a notebook in `./notebooks/draw_robustness_profile.ipynb`
 
 
 ## Task 2: k-core decomposition
@@ -94,7 +93,7 @@ The algorithm identifies the $k$-core as follows:
 1. Calculate the degree of nodes in the network
 2. Remove the nodes with degree $k$ or less in the network.
 3. Recalculate the degree
-4. If all nodes have degree less than $k$ in the removed network, terminate the algorithm. Otherwise, go back to step 2.
+4. If all nodes have a degree less than $k$ in the removed network, terminate the algorithm. Otherwise, go back to step 2.
 
 Do not use the APIs that directly compute the $k$-core.
 
