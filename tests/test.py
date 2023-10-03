@@ -26,7 +26,7 @@ class Test(unittest.TestCase):
         assert rindex >= 0.3
         assert rindex <= 0.5
 
-    def test_random_attack(self):
+    def test_targeted_attack(self):
         x, y = degree_targeted_attack(self.g)
         assert np.all(np.isclose(np.diff(x), 1.0 / self.g.vcount()))
         assert len(x) == len(y)
